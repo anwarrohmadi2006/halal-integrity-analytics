@@ -12,6 +12,7 @@ def find_ttl_file(custom_path=None):
     candidates = [
         os.path.join("data", "raw", "lodhalalturtle.ttl"),
         "lodhalalturtle.ttl",
+        os.path.join("..", "lodhalalturtle", "lodhalalturtle.ttl"),
         os.path.join("..", "lodhalalturtle.ttl"),
         os.path.join("..", "data", "raw", "lodhalalturtle.ttl"),
         os.path.join("..", "..", "lodhalalturtle.ttl")
