@@ -2,19 +2,17 @@
 ## MATAKULIAH: PYTHON UNTUK SAINS DATA (TUGAS PROYEK AKHIR KELOMPOK)
 ### TOPIK: NAVIGASI INTEGRITAS HALAL — PEMETAAN KOMPUTASIONAL BAHAN PANGAN RIIL BERBASIS MULTIPLE CORRESPONDENCE ANALYSIS (MCA) DAN SPARSE RBF SPECTRAL CLUSTERING
 
----
 
 ## IDENTITAS ANGGOTA KELOMPOK
-| No | Nama | NIM | Peran |
-|----|------|-----|-------|
-| 1 | **Anwar Rohmadi** | 247411027 | Ketua / Data Wrangling & Parser |
-| 2 | Muhammad Fathir Raihan Al Farici | 247411007 | Pemodelan Matematika & MCA |
-| 3 | Muhammad Thoriq Yusron Muttaqiin | 247411016 | Spectral Clustering & Evaluasi |
-| 4 | Muhammad Rasyid Arrafi | 247411019 | Visualisasi UMAP & Heatmap |
-| 5 | Naufal Ajwa Nurfarros | 247411024 | Storytelling & Laporan |
-| 6 | Ravelino Bagas Pratama | 247411025 | Presentasi & Validasi |
+| No | Nama | NIM |
+|---|------|-----|
+| 1 | **Anwar Rohmadi** | 247411027 |
+| 2 | Muhammad Fathir Raihan Al Farici | 247411007 |
+| 3 | Muhammad Thoriq Yusron Muttaqiin | 247411016 |
+| 4 | Muhammad Rasyid Arrafi | 247411019 |
+| 5 | Naufal Ajwa Nurfarros | 247411024 |
+| 6 | Ravelino Bagas Pratama | 247411025 |
 
----
 
 ## Ringkasan Eksekutif
 
@@ -22,7 +20,6 @@ Integritas rantai pasok pangan halal merupakan isu krusial yang memerlukan ketel
 
 Hasil pemodelan dibandingkan secara komparatif dengan algoritma baseline **K-Means Clustering** serta dianalisis menggunakan diagram visual terintegrasi. Kami menemukan bahwa K-Means memotong paksa data pangan secara linier (*spherical Voronoi cuts*) sehingga menumpuk 10.022 produk dalam satu klaster tunggal, mengabaikan jalinan keterkaitan bahan yang kontinu. Sebaliknya, Spectral Clustering ($K=8$) berhasil membagi produk pangan secara proporsional mengikuti kepadatan lokal graf, menghasilkan korelasi kehalalan objektif di lapangan yang jauh lebih kuat (Cramer's V = **0.5098** vs. K-Means = **0.3853**; AMI = **0.2157** vs. K-Means = **0.1298**). Uji metrik graf membuktikan bahwa Spectral Clustering memiliki *Average Graph Conductance* yang lebih rendah (**0.0936** vs. K-Means = **0.1246**), menandakan keterisolasian klaster yang bersih dari kebocoran hubungan bahan baku luar. Melalui visualisasi *Data Storytelling*, kami mengungkap adanya *blind spot* besar di mana **73,5%** produk bersertifikat administratif justru menyembunyikan komposisi bahan bakunya, menyoroti pentingnya audit bahan baku secara objektif dan spasial.
 
----
 
 ## BAB I: PENDAHULUAN
 
@@ -40,7 +37,6 @@ Penelitian ini bertujuan untuk:
 2. Membandingkan secara komparatif kinerja pembagian klaster berbasis jarak Euclidean linear (K-Means) dengan model konektivitas graf (Spectral Clustering) pada data riil produk pangan.
 3. Mengembangkan visualisasi grafis terpadu untuk menceritakan kisah sebaran bahan aditif pangan kritis (*Data Storytelling*) dan merumuskan rekomendasi titik kritis kehalalan (CCP).
 
----
 
 ## BAB II: TINJAUAN PUSTAKA
 
@@ -88,7 +84,6 @@ $$C = \sum_{i \neq j} \left[ p_{ij} \log \frac{p_{ij}}{q_{ij}} + (1 - p_{ij}) \l
 
 Di mana $p_{ij}$ adalah probabilitas ketetanggaan di ruang dimensi tinggi dan $q_{ij}$ di dimensi rendah. UMAP mempertahankan struktur lokal graf ketetanggaan secara konsisten dengan Spectral Clustering.
 
----
 
 ## BAB III: METODOLOGI PENELITIAN
 
@@ -112,7 +107,7 @@ graph TD
 ```
 
 ### 3.2 Sumber Data
-Dataset yang digunakan dalam proyek penelitian dan *Data Storytelling* ini bersumber dari dataset **LOD (Linked Open Data) Halal** yang dikembangkan oleh Institut Teknologi Sepuluh Nopember (ITS) Surabaya. Himpunan data ini diakses secara publik dan dimodifikasi secara terstruktur pada repositori GitHub [anwarrohmadi2006/halal-analyzer](https://github.com/anwarrohmadi2006/halal-analyzer) yang mengacu pada data Zenodo record **4099125**.
+Dataset yang digunakan dalam proyek penelitian dan *Data Storytelling* ini bersumber dari dataset **LOD (Linked Open Data) Halal** yang dikembangkan oleh Institut Teknologi Sepuluh Nopember (ITS) Surabaya. Himpunan data ini diakses secara publik dan dimodifikasi secara terstruktur pada repositori GitHub [anwarrohmadi2006/halal-integrity-analytics](https://github.com/anwarrohmadi2006/halal-integrity-analytics) yang mengacu pada data Zenodo record **4099125**.
 
 #### Ringkasan Volume Data:
 *   **Total Produk Makanan (Rows):** 59.453 produk
@@ -201,7 +196,6 @@ Dekomposisi nilai eigen pada matriks Burt menghasilkan 30 komponen utama. Evalua
 - **Spectral Clustering:** Jumlah klaster $K = 8$, inisialisasi eigen-solver LOBPCG, dan pencarian label melalui diskretisasi vektor eigen (*discretize*).
 - **K-Means Baseline:** Jumlah klaster $K = 8$, inisialisasi `k-means++`, $n\_init = 10$, dijalankan langsung pada koordinat MCA 8D.
 
----
 
 ## BAB IV: HASIL DAN PEMBAHASAN
 
@@ -313,7 +307,6 @@ Melalui penerapan algoritma Spectral Clustering pada ruang MCA 8D, produk pangan
      * *Shortening & Mentega (Butter):* Roti manis memerlukan lemak untuk melembutkan adonan. Shortening hewani (lemak babi/lard) harus diwaspadai karena sering digunakan tanpa deklarasi yang jelas.
    * **Sampel Produk Nyata:** *365 delhaize mousseline de pommes*, *365 everyday value whole foods market inc sweetened banana chips*, *3 fellers apple pie*.
 
----
 
 ### 4.5 Peta Spektral & Visualisasi Permodelan
 Di bawah ini dilampirkan visualisasi spasial sebaran produk pangan komersial serta hasil analisis komparatif performa algoritma:
@@ -371,7 +364,6 @@ Dashboard ini menyediakan eksplorasi visual interaktif yang membantu membumikan 
 * **UMAP 2D Explorer:** Mengonversi data multidimensi menjadi visualisasi interaktif dua dimensi berbentuk galaksi sebaran produk. Pengguna dapat mengarahkan kursor (*hover*) pada setiap titik produk untuk melihat komposisi bahan penyusunnya serta posisi relatifnya terhadap klaster produk lain, sehingga memberikan representasi intuitif mengenai bagaimana Spectral Clustering mengelompokkan kemiripan bahan baku secara objektif.
 * **Live Recipe Scanner:** Fitur interaktif yang berfungsi sebagai alat bantu simulasi kebijakan, di mana pengguna dapat memasukkan resep bahan baku secara bebas untuk dianalisis kelayakan kehalalannya secara otomatis berdasarkan basis data fatwa MUI. Fitur ini secara langsung mendemonstrasikan kelayakan implementasi penapisan otomatis (*automated screening*) pada sistem regulasi jaminan produk halal nasional di masa depan.
 
----
 
 ### 4.7 Temuan Utama Data Storytelling (Insights)
 
@@ -389,7 +381,6 @@ Berdasarkan visualisasi dan pengolahan data yang dilakukan, kelompok kami merumu
 4. **Kompleksitas Bahan Berbanding Terbalik dengan Kehalalan:**
    Kluster produk dengan resep sederhana memiliki tingkat kehalalan objektif yang sangat tinggi (mencapai 97,8% pada C7). Sebaliknya, kluster produk premium yang memiliki rata-rata jumlah bahan baku kompleks (klaster C4 Olahan Tepung & Sereal, rata-rata 24,8 aditif) memiliki tingkat kehalalan objektif terendah yaitu **2,7%** karena akumulasi risiko bahan kritis (*mushbooh*).
 
----
 
 ### 4.8 Tabel Ringkasan Risiko Klaster Halal
 
@@ -419,7 +410,6 @@ Berikut adalah ringkasan profil kehalalan tingkat lanjut untuk setiap klaster ya
 2. **Keterbukaan Informasi Regulasi:** Badan Penyelenggara Jaminan Produk Halal (BPJPH) dan kementerian terkait disarankan mewajibkan produsen makanan kemasan mencantumkan rincian aditif secara terbuka di pangkalan data publik untuk menghilangkan *blind spot* transparansi halal.
 3. **Audit Rantai Pasok Terfokus:** Melakukan audit rantai pasok super ketat khusus pada importasi dan penggunaan *Gelatin* serta *Emulsifier* (E471) yang menjadi titik kritis utama pada produk-produk pangan kompleks (Klaster 8).
 
----
 
 ## DAFTAR PUSTAKA
 
@@ -430,7 +420,6 @@ Berikut adalah ringkasan profil kehalalan tingkat lanjut untuk setiap klaster ya
 5. **Universitas Islam Negeri Maulana Malik Ibrahim Malang. (2025).** Implementasi Spectral Clustering untuk Pengelompokkan Kabupaten/Kota di Indonesia Berdasarkan Indeks Khusus Penanganan Stunting. *Tesis*.
 6. **Ahmed, M., Chowdhury, M.A., Rahman, M.M., & Islam, M.N. (2022).** IoT-based Smart Aquaculture: A Review of Recent Progress, Challenges, and Prospects. *Aquacultural Engineering*, 96, 102211.
 
----
 
 ## LAMPIRAN: PANDUAN ANTISIPASI PERTANYAAN UJIAN PERTAHANAN PROYEK (Q&A DEFENSE PREPARATION)
 
@@ -454,7 +443,6 @@ Untuk mendukung kesiapan tim dalam mempresentasikan laporan gabungan Python untu
 * **Tetangga Terdekat ($k=100$)**: Skala data kita bernilai $N=15.739$. Konfigurasi $k=100$ dipilih agar graf menangkap kepadatan lokal secara kontinu tanpa terpecah menjadi puluhan subgraph terisolasi jika $k$ terlalu kecil ($k=5$), dan tidak kehilangan sifat topologi lokal manifold jika $k$ terlalu besar ($k=1000$) yang menyebabkannya berperilaku seperti K-Means.
 * **Kernel RBF ($\gamma=0.125$ atau $1/8$)**: Nilai $\gamma$ disetel sebagai $\frac{1}{\text{Dimensi MCA}}$ (di mana jumlah dimensi dipertahankan $D=8$ berdasarkan signifikansi Greenacre). Ini menormalkan jarak Euclidean di ruang spektral sehingga bobot eksponensial graf tidak meluruh terlalu cepat menjadi nol.
 
----
 
 ### Sesi B: Narasi Storytelling & Hasil Klasterisasi
 
