@@ -148,29 +148,67 @@ tugas_akhir_data_storytelling/
 
 ---
 
-## ⚡ Petunjuk Replikasi & Menjalankan Pipeline
+## ⚡ Petunjuk Replikasi & Menjalankan Pipeline (End-to-End)
 
-### 1. Instalasi Dependensi
-Pastikan Python 3.8+ telah terpasang. Pasang pustaka yang diperlukan:
+Untuk mereplikasi seluruh alur data, pemodelan, dan visualisasi dari awal, silakan ikuti langkah-langkah berikut secara berurutan:
+
+### Langkah 1: Instalasi Dependensi & Lingkungan Kerja
+Pastikan Python 3.8+ telah terpasang. Jalankan perintah berikut untuk menginstal seluruh pustaka yang diperlukan:
 ```bash
 pip install numpy pandas matplotlib seaborn scikit-learn umap-learn docx pypandoc
 ```
-*Catatan: Pasang `pandoc` di sistem Anda jika ingin mengekspor/kompilasi laporan Markdown ke Word.*
+*(Catatan: Pasang program `pandoc` di sistem Anda jika ingin mengekspor/kompilasi laporan Markdown `.md` ke format Word `.docx`.)*
 
-### 2. Eksekusi Pemodelan Backend
-Jalankan modul pemodelan backend untuk memproses data mentah RDF, melakukan MCA, dan Spectral Clustering:
+### Langkah 2: Persiapan Database Mentah
+Letakkan database graf semantik mentah `lodhalalturtle.ttl` di salah satu lokasi berikut agar dapat dideteksi secara otomatis oleh sistem:
+* Direktori root: `tugas_akhir_data_storytelling/lodhalalturtle.ttl`
+* Direktori data mentah: `tugas_akhir_data_storytelling/data/raw/lodhalalturtle.ttl`
+* Direktori induk: `../lodhalalturtle.ttl`
+
+### Langkah 3: Ekstraksi Data Semantik (RDF ke Tabular)
+Jalankan skrip parser untuk mengekstrak triples dari format Turtle semantik menjadi format tabular datar (flat CSV):
+```bash
+python scripts/extract_data.py
+```
+*Output:* File tabular hasil ekstraksi akan disimpan di `data/processed/halal_products_tabular.csv`.
+
+### Langkah 4: Pemodelan Spasial & Pengklasteran Spektral
+Jalankan skrip pemodelan utama untuk melakukan klasifikasi kehalalan objektif (worst-case), reduksi dimensi MCA (8 komponen), pembangunan graf ketetanggaan 100-NN, Spectral Clustering ($K=8$), dan proyeksi UMAP 2D:
 ```bash
 python scripts/run_modeling.py
 ```
+*Output:*
+* File dataset klaster spasial: `data/processed/product_spectral_clusters.csv`
+* Plot visualisasi sebaran klaster 2D: `mca_spectral_plot.png`
 
-### 3. Ekspor Gambar Storytelling
-Ekspor ulang 4 infografis visual naratif ke folder `output_halal/`:
+### Langkah 5: Evaluasi Model & Tuning Rentang Nilai K
+Jalankan skrip evaluasi komparatif untuk membandingkan model berbasis konektivitas graf (Spectral) dengan pemotongan linier (K-Means), serta melakukan tuning jumlah klaster dari $K=2$ hingga $13$:
+```bash
+python scripts/run_evaluation_tuning.py
+```
+*Output:*
+* Grafik perbandingan partisi spasial K-Means vs Spectral: `kmeans_vs_spectral_comparison.png`
+* Berkas metrik performa tiap nilai K: `data/processed/spectral_k_range_results.csv`
+* Grafik kurva evaluasi Cramer's V & Graph Conductance: `spectral_k_range_evaluation.png`
+
+### Langkah 6: Ekspor Grafik Infografis Visual Storytelling
+Jalankan skrip visualisasi agregat untuk mengekspor 4 gambar infografis data storytelling ke folder keluaran:
 ```bash
 python scripts/run_storytelling.py
 ```
+*Output:* 4 berkas gambar infografis di dalam folder `output_halal/`:
+1. `output_halal/fig1_dashboard_overview.png` (Statistik makro & blind spot data)
+2. `output_halal/fig2_bahan_bermasalah.png` (Distribusi bahan kritis syubhat/gelatin)
+3. `output_halal/fig3_cooccurrence_heatmap.png` (Pola ko-kemunculan aditif industri)
+4. `output_halal/fig4_cluster.png` (Grafik hubungan kompleksitas aditif vs persentase kehalalan)
 
-### 4. Menjalankan Dashboard Lokal
-Buka file `web_dashboard/index.html` menggunakan browser pilihan Anda (disarankan menggunakan extension Live Server di VS Code untuk performa optimal).
+### Langkah 7: Menjalankan Dashboard Interaktif secara Lokal
+1. Masuk ke direktori dashboard web: `cd web_dashboard`
+2. Jalankan HTTP server lokal (misalnya menggunakan Python):
+   ```bash
+   python -m http.server 8000
+   ```
+3. Buka browser dan akses alamat `http://localhost:8000` untuk berinteraksi dengan **UMAP 2D Explorer** dan **Live Recipe Scanner**.
 
 ---
 
