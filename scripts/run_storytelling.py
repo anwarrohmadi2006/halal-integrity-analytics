@@ -24,25 +24,26 @@ def main():
             "shrimp","pork","alcohol","lactic_acid","acetic_acid","caramel"
         ],
         "halal_status": [
-            "halal","halal","halal","halal","halal","halal","halal","mashbooh","halal",
-            "halal","halal","halal","halal","halal","mashbooh","haram","haram","mashbooh",
-            "halal","halal","halal","halal","mashbooh","mashbooh","mashbooh","mashbooh",
-            "halal","halal","halal","halal","halal","halal","halal","halal","halal","halal",
+            "halal","halal","halal","mashbooh","mashbooh","halal","halal","halal",
+            "halal","halal","halal","halal","halal","halal","mashbooh","halal","haram",
+            "mashbooh","halal","halal","halal","halal","halal","halal","halal","halal",
             "halal","halal","halal","halal","halal","halal","halal","halal","halal",
-            "haram","haram","halal","halal","halal"
+            "halal","halal","halal","halal","halal","halal","halal","halal","halal",
+            "halal","haram","halal","halal","halal","halal"
         ],
         "frequency_in_products": [
-            5745,5268,4041,2120,1843,2099,2222,1286,1560,1193,980,1450,2340,870,
-            620,180,95,760,1120,890,1340,1080,950,680,540,490,430,380,560,320,
-            740,1680,1240,2560,1890,780,650,480,920,1640,1380,1290,1950,1120,
-            480,42,38,890,760,1240
+            5745,5268,4041,2120,1843,2099,2222,1286,1560,1193,633,578,24,0,
+            81,0,0,73,908,166,7,4,0,214,
+            0,0,320,38,163,403,255,28,649,1123,459,284,
+            146,61,482,975,858,3,2,212,17,390,92,358,49,177
         ],
         "risk_level": [
-            "low","low","low","medium","low","low","low","high","low","low","low","low",
-            "medium","medium","high","high","high","high","low","low","low","low","high",
-            "high","high","high","low","low","low","low","low","low","low","low","low",
-            "low","low","low","low","low","low","low","low","low","low","high","high",
-            "low","low","low"
+            "low","low","low","medium","high","low","low","low",
+            "low","low","low","low","low","low","high","low","high",
+            "high","low","low","low","low","low","low","low","low",
+            "low","low","low","low","low","low","low","low","low",
+            "low","low","low","low","low","low","low","low","low",
+            "low","high","low","low","low","low"
         ],
     })
 
@@ -65,21 +66,29 @@ def main():
         [322,623,762,9,111,346,2222,63,433,78],
         [959,887,559,696,368,226,63,1286,153,400],
         [522,409,639,178,189,358,433,153,1560,206],
-        [1024,780,447,524,454,196,78,400,206,1193],
+        [1024,780,447,524,454,196,78,400,206,1193]
     ])
     df_cooc = pd.DataFrame(cooc_matrix, index=top_ingredients, columns=top_ingredients)
 
     df_clusters = pd.DataFrame({
-        "cluster_label": ["C1 Sederhana","C2 Kompleks","C3 Berdaging","C4 Manis",
-                          "C5 Asam","C6 Olahan","C7 Mentah","C8 Premium"],
-        "n_products":    [2847,1983,1567,2234,1124,1876,1543,565],
-        "avg_ingredients":[3.2,8.7,6.1,7.4,5.8,9.2,2.4,11.3],
-        "halal_pct":     [98.1,87.3,91.2,94.7,96.8,85.9,99.4,82.6],
+        "cluster_label": [
+            "C1 Bumbu & Gurih",
+            "C2 Cemilan & Sayur",
+            "C3 Jus & Bayi",
+            "C4 Tepung & Sereal",
+            "C5 Selai & Pemanis",
+            "C6 Daging Sapi",
+            "C7 Komoditas Mentah",
+            "C8 Permen & Susu"
+        ],
+        "n_products":    [4759, 4571, 1216, 403, 1538, 522, 1100, 1630],
+        "avg_ingredients":[19.6, 4.2, 8.0, 24.8, 4.5, 3.4, 1.8, 14.6],
+        "halal_pct":     [15.3, 83.3, 76.2, 2.7, 89.0, 6.9, 97.8, 38.2],
     })
 
     df_nutrition = pd.DataFrame({
         "nutrisi": ["Fat","Saturated Fat","Sodium","Fiber","Sugar","Protein"],
-        "pct_non_zero": [0.2288,0.1632,0.2304,0.1362,0.2422,0.1850],
+        "pct_non_zero": [0.002288, 0.001632, 0.002304, 0.001362, 0.002422, 0.001850],
     })
 
     # 2. Memanggil fungsi rendering dashboard storytelling [CRISP-DM: Deployment]

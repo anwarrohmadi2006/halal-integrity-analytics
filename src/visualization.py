@@ -119,7 +119,7 @@ def plot_synthetic_spiral_comparison(X, km_labels, sc_labels, save_path="synthet
 
 def plot_data_storytelling_dashboard(df_ingredients, df_cert, df_cooc, df_clusters, df_nutrition, save_dir="output_halal"):
     """
-    Membuat 5 grafik infografis data storytelling terpadu dan menyimpannya ke folder output.
+    Membuat 4 grafik infografis data storytelling terpadu dan menyimpannya ke folder output.
     """
     os.makedirs(save_dir, exist_ok=True)
     palette_colors = ["#2E8B57", "#27AE60", "#F39C12", "#E74C3C", "#8E44AD", "#2980B9", "#16A085", "#D35400"]
@@ -264,51 +264,4 @@ def plot_data_storytelling_dashboard(df_ingredients, df_cert, df_cooc, df_cluste
     plt.savefig(os.path.join(save_dir, "fig4_cluster.png"))
     plt.close()
 
-    # 5. FIG 5: INSIGHT SUMMARY
-    fig, ax = plt.subplots(figsize=(11, 7.5), dpi=150)
-    fig.patch.set_facecolor(PALETTE["bg"])
-    ax.set_facecolor(PALETTE["bg"])
-    ax.axis("off")
-    
-    plt.text(0.5, 0.92, "RINGKASAN TEMUAN UTAMA (KEY INSIGHTS)\nINTEGRITAS HALAL PANGAN KOMERSIAL",
-             fontsize=15, fontweight="bold", color=PALETTE["text"], ha="center", va="center")
-             
-    insights = [
-        ("1. Celah Transparansi (Sparsity Bias)", 
-         "Sebesar 73.53% data produk tidak memiliki data bahan baku di database sekunder LOD Halal,\ndan 99.9% produk dengan sertifikat aktif tidak mencantumkan komposisi bahan bakunya. Hal ini membatasi\naudit digital berbasis bahan baku secara menyeluruh."),
-        ("2. Gelatin Sebagai Titik Kritis Terbesar", 
-         "Gelatin (Syubhat/Mushbooh) muncul sebanyak 620 kali pada produk pangan komersial.\nGelatin adalah titik kritis utama karena di pasar dunia sering kali diekstrak dari kulit/tulang babi\natau hewan non-halal."),
-        ("3. Kompleksitas Resep vs Kehalalan", 
-         "Semakin kompleks bahan tambahan pangan (aditif) yang digunakan, semakin turun tingkat kehalalannya.\nKlaster resep kompleks (C8) memiliki tingkat kehalalan terendah (82.6%) dibanding resep sederhana (C7: 99.4%)."),
-        ("4. Pola Formulasi Resep Industri", 
-         "Hasil heatmap menunjukkan asosiasi resep yang sangat konsisten, seperti perisa komersial\nyang selalu berpasangan dengan gula pengikat rasa (dextrose) pada klaster olahan daging."),
-        ("5. Pentingnya Pemodelan Non-Linier Graf", 
-         "Uji metrik membuktikan model Spektral Graf jauh lebih representatif memetakan biokimia pangan\n(Conductance = 0.0935) dibanding model linier K-Means yang memaksakan pengelompokan membulat (Voronoi)."),
-        ("6. Sistem Pendukung Keputusan", 
-         "Hasil pemetaan 8 klaster biokimia ini sangat direkomendasikan sebagai asisten digital (Decision Support)\nbagi lembaga audit pangan halal untuk mendeteksi potensi risiko kontaminasi secara dini.")
-    ]
-    
-    positions = [
-        (0.05, 0.65), (0.52, 0.65),
-        (0.05, 0.38), (0.52, 0.38),
-        (0.05, 0.11), (0.52, 0.11)
-    ]
-    
-    for (title, text), (px, py) in zip(insights, positions):
-        # Draw box
-        rect = mpatches.FancyBboxPatch(
-            (px, py), 0.43, 0.22,
-            boxstyle="round,pad=0.01",
-            facecolor="white", edgecolor="#BDC3C7", linewidth=1.2,
-            mutation_scale=0.02
-        )
-        ax.add_patch(rect)
-        
-        # Add text
-        plt.text(px + 0.02, py + 0.18, title, fontsize=10, fontweight="bold", color="#2C3E50", ha="left", va="center")
-        plt.text(px + 0.02, py + 0.09, text, fontsize=7.5, color="#555555", ha="left", va="center", linespacing=1.4)
-        
-    plt.tight_layout()
-    plt.savefig(os.path.join(save_dir, "fig5_insight_summary.png"))
-    plt.close()
-    print(f"5 Grafik Infografis Storytelling berhasil disimpan ke: {save_dir}/")
+    print(f"4 Grafik Infografis Storytelling berhasil disimpan ke: {save_dir}/")

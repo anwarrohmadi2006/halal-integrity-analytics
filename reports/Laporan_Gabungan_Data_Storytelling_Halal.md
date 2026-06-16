@@ -362,9 +362,6 @@ Fenomena akumulasi risiko ini secara sistematis tergambar pada perbandingan kara
 
 Visualisasi karakteristik klaster di atas memperlihatkan korelasi yang jelas antara kompleksitas formulasi produk dengan tingkat kehalalan objektifnya. Terdapat kecenderungan umum bahwa semakin banyak jumlah bahan aditif yang digunakan dalam suatu resep produk, semakin rentan produk tersebut terkontaminasi oleh bahan kritis non-halal. Fenomena ini terlihat jelas pada Klaster 7 (komoditas pertanian mentah) yang memiliki jumlah bahan minimal dan mencatat tingkat kehalalan objektif tertinggi hingga 97,8% (halal asali). Sebaliknya, Klaster 4 (olahan tepung & sereal terfortifikasi) yang menggunakan rata-rata 24,8 bahan aditif kimia per produk mencatat tingkat kehalalan objektif terendah, yaitu sebesar 2,7%. Hal ini disebabkan oleh penggunaan aditif fungsional penolong secara masif seperti pelembut adonan (L-sistein) dan vitamin fortifikasi yang rawan disalut oleh gelatin non-halal.
 
-Untuk menyederhanakan temuan-temuan kunci tersebut bagi pemangku kepentingan, seluruh intisari analisis dirangkum dalam kartu visual infografis berikut.
-
-![Infografis Ringkasan Insight](output_halal/fig5_insight_summary.png)
 
 Sebagai puncak dari rangkaian *data storytelling*, laporan pasif ini diintegrasikan dengan purwarupa *web dashboard* interaktif yang dapat diakses secara langsung melalui tautan [halal-analyzer.pages.dev](https://halal-analyzer.pages.dev).
 
