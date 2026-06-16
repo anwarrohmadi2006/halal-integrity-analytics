@@ -53,6 +53,8 @@ Visualisasi utama yang dihasilkan secara otomatis dan disimpan dalam direktori `
    * *Insight*: Membuktikan secara empiris teori **Akumulasi Risiko Spasial**—semakin kompleks bahan aditif pada resep produk (seperti Klaster 8 Confectionery dengan rata-rata 11,3 aditif), tingkat kehalalan objektifnya anjlok hingga **82,6%**.
 5. **Grafik 5: Infografis Ringkasan Temuan (`fig5_insight_summary.png`)**
    * *Insight*: Rangkuman 6 kartu temuan utama visual untuk konsumsi publik.
+6. **Grafik 6: Purwarupa Web Dashboard Interaktif (`fig6_web_dashboard.png`)**
+   * *Insight*: Antarmuka visual interaktif berbasis web yang memuat peta spasial proyeksi UMAP 2D serta simulasi Live Recipe Scanner untuk mendeteksi risiko CCP kehalalan komposisi secara otomatis.
 
 ---
 
@@ -89,7 +91,7 @@ tugas_akhir_data_storytelling/
 │   ├── Laporan_Gabungan_Data_Storytelling_Halal.md   # File Markdown Laporan Utama
 │   ├── Laporan_Gabungan_Data_Storytelling_Halal.pdf  # File PDF Laporan Utama
 │   └── Laporan_Gabungan_Data_Storytelling_Halal.docx # Backup konversi docx standar
-├── output_halal/                   # Folder target ekspor 5 infografis data storytelling
+├── output_halal/                   # Folder target ekspor 6 infografis data storytelling
 ├── mca_spectral_plot.png           # Gambar visualisasi UMAP Spektral 2D (Root)
 ├── kmeans_vs_spectral_comparison.png # Gambar visualisasi komparatif spasial (Root)
 ├── spectral_k_range_evaluation.png # Gambar visualisasi analisis siku optimasi K (Root)

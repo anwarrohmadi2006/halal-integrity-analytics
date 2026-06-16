@@ -97,19 +97,7 @@ Penelitian ini mengadopsi standar metodologi **CRISP-DM (Cross-Industry Standard
 
 ### 3.2 Diagram Alir Penelitian (End-to-End Pipeline)
 
-```mermaid
-graph TD
-    A[Dataset Mentah Pangan Halal N=15.739] --> B[Binerisasi Komposisi Top 500 Ingredients]
-    B --> C[Multiple Correspondence Analysis - MCA]
-    C --> D[Kaiser Criterion & Koreksi Greenacre]
-    D -->|8 Komponen MCA| E[Konstruksi Sparse RBF Adjacency Graph 100-NN]
-    E --> F[Spectral Clustering K=8 via LOBPCG Solver]
-    C --> G[K-Means Clustering K=8 via Euclidean Space]
-    F --> H[Evaluasi Metrik Komparatif Graf & Halal]
-    G --> H
-    F --> I[Proyeksi Visualisasi UMAP 2D]
-    I --> J[Dashboard Visual Interaktif]
-```
+![Diagram Alir Penelitian](output_halal/fig0_flowchart.png)
 
 ### 3.2 Sumber Data
 Dataset yang digunakan dalam proyek penelitian dan *Data Storytelling* ini bersumber dari dataset **LOD (Linked Open Data) Halal** yang dikembangkan oleh Institut Teknologi Sepuluh Nopember (ITS) Surabaya. Himpunan data ini diakses secara publik dan dimodifikasi secara terstruktur pada repositori GitHub [anwarrohmadi2006/halal-analyzer](https://github.com/anwarrohmadi2006/halal-analyzer) yang mengacu pada data Zenodo record **4099125**.
