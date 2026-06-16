@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Issue #12: Meta description & OG tags -->
+  <meta name="description" content="Sistem analisis kehalalan produk pangan berbasis MCA dan Spectral Clustering. Proyek riset ITS LOD Halal Dataset.">
+  <meta property="og:title" content="Halal Product Analyzer — ITS LOD Halal Project">
+  <meta property="og:description" content="Audit kehalalan produk pangan secara objektif berbasis komposisi bahan baku menggunakan MCA + Spectral Clustering.">
+  <meta property="og:type" content="website">
+  <title>Halal Product Analyzer — ITS LOD Halal</title>
+  <link rel="stylesheet" href="index.css?v=1.2">
+  <!-- Chart.js for UMAP Plot -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- MessagePack Decoder -->
+  <script src="https://unpkg.com/@msgpack/msgpack@3.1.3/dist.umd/msgpack.min.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside>
+    <div class="logo-container">
+      <div class="logo-icon">H</div>
+      <div class="logo-text">HalalAnalyzer</div>
+    </div>
+    
+    <div class="theme-toggle-container">
+      <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <span class="theme-btn-text">Switch to Dark Theme</span>
+      </button>
+    </div>
+    
+    <ul class="nav-links">
+      <li class="nav-item">
+        <button class="nav-btn active" onclick="switchTab('dashboard')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" onclick="switchTab('umap')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+          UMAP Explorer
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" onclick="switchTab('scanner')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Live Scanner
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" onclick="switchTab('database')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          Product DB
+        </button>
+      </li>
+    </ul>
+    
+    <div class="sidebar-footer">
+      <p>ITS LOD Halal Project</p>
+      <p style="margin-top: 0.25rem;">Multivariate Analysis v1.0</p>
+    </div>
+  </aside>
+
+  <!-- Mobile Header bar (Hidden on Desktop) -->
+  <div class="mobile-header">
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="mobile-logo-text">HalalAnalyzer</div>
+    <button class="mobile-theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+
+  <!-- Main Content Space -->
+  <main>
+    
+    <!-- Header -->
+    <header>
+      <h1 class="page-title" id="page-title">Sistem Penilaian Halal</h1>
+      <p class="page-subtitle" id="page-subtitle">Eksperimen MCA + Spectral Clustering & Deteksi Bahan Kritis</p>
+    </header>
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="dashboard" class="tab-content active">
+      <!-- Stat Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Total Produk Dianalisis</span>
+          <span class="stat-value" id="total-products-count">—</span>
+          <span class="stat-desc" id="total-products-desc">Seluruh produk ber-bahan baku dari RDF</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Rate Halal Objektif</span>
+          <!-- Issue #10: Ganti hardcode dengan placeholder — (diisi JS setelah data loaded) -->
+          <span class="stat-value" id="overall-halal-rate">—</span>
+          <span class="stat-desc">Terverifikasi aman secara biokimiawi</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Mushbooh (Doubtful)</span>
+          <span class="stat-value" id="overall-mushbooh-rate">—</span>
+          <span class="stat-desc">Mengandung bahan kritis perlu audit</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Haraam Detected</span>
+          <span class="stat-value" id="overall-haraam-rate">—</span>
+          <span class="stat-desc">Mengandung turunan babi/bahan dilarang</span>
+        </div>
+      </div>
+
+      <div class="dashboard-layout">
+        <!-- Main Panel: Cluster overview -->
+        <div class="main-panel">
+          <div class="section-header">
+            <h2 class="section-title">Hasil Taksonomi 8 Klaster Pangan (MCA + Spectral Clustering)</h2>
+          </div>
+          <div class="clusters-grid" id="clusters-container">
+            <!-- Dynamically populated by app.js -->
+          </div>
+        </div>
+        
+        <!-- Sidebar Panel: Methodology -->
+        <div class="detail-panel">
+          <div class="detail-header">
+            <h3 class="detail-title">Metodologi Riset</h3>
+            <p class="detail-manufacturer" style="color: #a5b4fc;">Sains Industri Halal</p>
+          </div>
+          <div class="detail-body" style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">
+            <p style="margin-bottom: 0.75rem;">Aplikasi ini mendemonstrasikan evaluasi kehalalan secara objektif berbasis resep bahan baku.</p>
+            <p style="margin-bottom: 0.75rem;"><strong>Kenapa MCA?</strong> MCA (Multiple Correspondence Analysis) memproyeksikan data kategorikal bahan baku biner ke dalam ruang kontinu berdimensi rendah dengan pembobotan Chi-square, yang meniadakan efek bahan baku umum (seperti air atau garam) yang mendominasi kesamaan.</p>
+            <p style="margin-bottom: 0.75rem;"><strong>Kenapa Spectral Clustering?</strong> Spectral Clustering melakukan pengelompokkan menggunakan dekomposisi eigen pada kernel kedekatan (RBF) di ruang kontinu MCA untuk membagi wilayah produk pangan secara teratur dan stabil.</p>
+            <p><strong>Kenapa Audit Bahan Baku?</strong> Karena 100% data sertifikat halal pada produk ber-bahan lengkap di ontologi kosong, analisis ini menyuntikkan aturan aditif bahan kritis untuk audit mandiri.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: UMAP VISUAL EXPLORER -->
+    <section id="umap" class="tab-content">
+      <div class="umap-layout">
+        <!-- Chart Panel -->
+        <div class="chart-panel">
+          <div class="section-header">
+            <h2 class="section-title">Peta Topologi Kedekatan Produk Halal</h2>
+            <span style="font-size: 0.85rem; color: var(--text-secondary);">Klik titik pada plot untuk memeriksa komposisi bahan</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="umapChart"></canvas>
+          </div>
+          <div class="chart-legend-floating" id="umap-legend">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+        
+        <!-- Detail Card -->
+        <div class="detail-panel" id="product-detail-card">
+          <div class="detail-header">
+            <h3 class="detail-title" id="det-title">Pilih Produk</h3>
+            <p class="detail-manufacturer" id="det-manufacturer">Silakan klik titik pada peta UMAP</p>
+          </div>
+          <div class="detail-body">
+            <div>
+              <div class="detail-item-label">Status Sertifikat Administrasi</div>
+              <div id="det-cert"><span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-secondary);">Tidak ada</span></div>
+            </div>
+            <div>
+              <div class="detail-item-label">Status Halal Objektif (Bahan)</div>
+              <div id="det-halal"><span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-secondary);">Tidak ada</span></div>
+            </div>
+            <div>
+              <div class="detail-item-label">Klaster Pangan</div>
+              <div class="detail-item-value" id="det-cluster">-</div>
+            </div>
+            <div>
+              <div class="detail-item-label">Komposisi Bahan Baku (Ingredients)</div>
+              <div class="detail-item-value" id="det-ingredients" style="font-size: 0.85rem; max-height: 180px; overflow-y: auto;">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: LIVE HALAL SCANNER -->
+    <section id="scanner" class="tab-content">
+      <div class="scanner-layout">
+        <!-- Input Text Panel -->
+        <div class="scanner-input-panel">
+          <h2 class="section-title">Input Komposisi Bahan</h2>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Masukkan daftar komposisi produk pangan komersial yang ingin Anda audit. Pisahkan antar bahan menggunakan tanda koma ( , ).<br><strong style="color: var(--accent-primary); display: inline-block; margin-top: 0.5rem;">⚠️ IMPORTANT NOTICE:</strong> Ingredients <strong>MUST be entered in Professional English</strong> (e.g., "wheat flour", "beef", "pork fat") because the semantic rules and database taxonomy strictly operate in English.</p>
+          <textarea class="scanner-textarea" id="scanner-input-text" placeholder="Please enter ingredients in English here, separated by commas. Example: Water, Sugar, Citric acid, Wheat flour, Beef, Pork fat, Emulsifier, Lecithin"></textarea>
+          <button class="scanner-btn" onclick="runLiveAudit()">Jalankan Audit Kehalalan</button>
+        </div>
+        
+        <!-- Results Panel -->
+        <div class="scanner-results-panel">
+          <h2 class="section-title" style="margin-bottom: 1.5rem;">Laporan Hasil Uji Audit</h2>
+          
+          <!-- Banner -->
+          <div class="scanner-status-banner" id="scanner-banner" style="display: none;">
+            <h3 class="scanner-status-title" id="scanner-status-title">Status</h3>
+            <p class="scanner-status-desc" id="scanner-status-desc">Hasil analisis bahan</p>
+          </div>
+          
+          <!-- Items List -->
+          <h3 class="top-ingredients-title" id="scan-list-title" style="margin-bottom: 0.75rem; display: none;">Rincian Status Tiap Bahan</h3>
+          <div class="audited-ingredients-list" id="scan-results-list">
+            <!-- Populated dynamically -->
+            <div style="color: var(--text-muted); text-align: center; margin-top: 4rem;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 1rem;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <p>Belum ada data di-scan. Silakan masukkan komposisi di sebelah kiri.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: PRODUCT DATABASE -->
+    <section id="database" class="tab-content">
+      <div class="table-panel">
+        <div class="section-header">
+          <h2 class="section-title">Eksplorasi Database Produk Halal</h2>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <!-- Issue #8: Use debounced handler to prevent lag on mobile -->
+            <input type="text" class="search-input" id="db-search" placeholder="Cari nama produk atau pabrikan..." oninput="filterDatabaseDebounced()">
+          </div>
+          
+          <select class="filter-select" id="db-filter-cluster" onchange="filterDatabase()">
+            <option value="">Semua Klaster Pangan</option>
+            <!-- Diisi secara dinamis oleh app.js dari dbData.clusters setelah data dimuat -->
+          </select>
+          
+          <select class="filter-select" id="db-filter-status" onchange="filterDatabase()">
+            <option value="">Semua Status Halal</option>
+            <option value="Halal">Halal Objektif</option>
+            <option value="Mushbooh">Mushbooh (Doubtful)</option>
+            <option value="Haraam">Haraam (Dilarang)</option>
+          </select>
+        </div>
+        
+        <!-- Issue #5: Pagination info row -->
+        <p id="db-result-info" style="font-size: 0.82rem; color: var(--text-secondary); margin: 0.5rem 0; display: none;"></p>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama Produk</th>
+                <th>Pabrikan</th>
+                <th>Klaster</th>
+                <th>Sertifikat</th>
+                <th>Status Halal Objektif</th>
+                <th>Komposisi</th>
+              </tr>
+            </thead>
+            <tbody id="db-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

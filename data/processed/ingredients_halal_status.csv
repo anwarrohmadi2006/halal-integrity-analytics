@@ -1,0 +1,165 @@
+ingredient_id,name,status,sources
+Acetic_acid,Acetic acid,Halal,"103,409"
+Adipic_acid,Adipic acid,Halal,"155,454"
+Agar_agar,Agar agar,Halal,"170,467"
+Alfa_Tocopherol,Alfa Tocopherol,Halal,"122,426"
+Allura_Red_AC,Allura Red AC,Halal,21
+Amidated_Pectin,Amidated Pectin,Mushbooh,"192,486"
+Ammonium_carbonate,Ammonium carbonate,Halal,"232,513"
+Ammonium_phosphatides,Ammonium phosphatides,Mushbooh,194
+Annatto,Annatto,Halal,"48,357"
+Anthocyanin,Anthocyanin,Halal,"61,370"
+Ascorbic_acid,Ascorbic acid,Halal,"117,421"
+Ascorbyl_palmitate,Ascorbyl palmitate,Mushbooh,"120,424"
+Aspartame,Aspartame,Halal,325
+Azorubine,Azorubine,Mushbooh,"16,340"
+Beeswax,Beeswax,Halal,"303,561"
+Bentonite,Bentonite,Halal,"272,543"
+Benzoic_acid,Benzoic acid,Halal,"73,382"
+Beta_carotene,Beta carotene,Mushbooh,"47,356"
+Betanin,Betanin,Mushbooh,"60,369"
+Black_carbon,Black carbon,Halal,"44,353"
+Brilliant_Blue_FCF,Brilliant Blue FCF,Halal,"24,347"
+Brown_HT,Brown HT,Mushbooh,"46,355"
+Butylated_hydroxyanisole,Butylated hydroxyanisole,Mushbooh,"131,432"
+Butylated_hydroxytoluene,Butylated hydroxytoluene,Mushbooh,"132,433"
+Calcium_acetate,Calcium acetate,Halal,"106,412"
+Calcium_alginate,Calcium alginate,Halal,"168,465"
+Calcium_ascorbate,Calcium ascorbate,Halal,"119,423"
+Calcium_carbonate,Calcium carbonate,Halal,"62,371"
+Calcium_chloride,Calcium chloride,Halal,"236,517"
+Calcium_citrate,Calcium citrate,Halal,"140,441"
+Calcium_gluconate,Calcium gluconate,Halal,"280,550"
+Calcium_lactate,Calcium lactate,Halal,"136,437"
+Calcium_phosphate,Calcium phosphate,Mushbooh,"148,449"
+Calcium_propanoate,Calcium propanoate,Halal,"110,416"
+Calcium_sulphate,Calcium sulphate,Halal,"243,522"
+Canthaxanthin,Canthaxanthin,Mushbooh,"59,368"
+Capsanthin,Capsanthin,Halal,"49,358"
+Caramel_Color,Caramel Color,Halal,"39,351"
+Carbon_dioxide,Carbon dioxide,Halal,"114,418"
+Carboxymethyl_cellulose,Carboxymethyl cellulose,Halal,"206,493"
+Carminic_acid,Carminic acid,Haraam,"13,339"
+Carnauba_wax,Carnauba wax,Halal,"305,562"
+Carrageenan,Carrageenan,Halal,"171,468"
+Cellulose,Cellulose,Halal,"201,488"
+Chlorophyll_a,Chlorophyll a,Mushbooh,"25,348"
+Chlorophyllin,Chlorophyllin,Mushbooh,"29,349"
+Citric_acid,Citric acid,Halal,"137,438"
+Crosslinked_sodium_carboxymethyl_cellulose,Crosslinked sodium carboxymethyl cellulose,Halal,208
+Curcumin,Curcumin,Mushbooh,"1,333"
+Dextrin,Dextrin,Halal,26
+Dimethyl_dicarbonate,Dimethyl dicarbonate,Halal,98
+Dimethylpolysiloxane,Dimethylpolysiloxane,Halal,"302,560"
+Disodium_5_ribonucleotides,Disodium 5 ribonucleotides,Mushbooh,"297,557"
+Disodium_guanylate,Disodium guanylate,Mushbooh,"289,555"
+Erythritol,Erythritol,Halal,331
+Ethylenediaminetetraacetic_acid,Ethylenediaminetetraacetic acid,Halal,"163,460"
+Ferrous_lactate,Ferrous lactate,Halal,281
+Fumaric_acid,Fumaric acid,Halal,"116,420"
+Gelatin,Gelatin,Mushbooh,193
+Gellan_gum,Gellan gum,Halal,179
+Glucono_delta_lactone,Glucono delta lactone,Halal,"277,547"
+Glutamic_acid,Glutamic acid,Mushbooh,"282,551"
+Glycerol,Glycerol,Mushbooh,"182,477"
+Glycerol_esters_of_wood_rosins,Glycerol esters of wood rosins,Halal,196
+Glycine,Glycine,Mushbooh,300
+Guar_gum,Guar gum,Halal,"173,470"
+Gum_arabic,Gum arabic,Halal,"175,472"
+Gum_karaya,Gum karaya,Halal,"177,474"
+Hydroxypropyl_methylcellulose,Hydroxypropyl methylcellulose,Halal,"204,491"
+Hydroxypropylcellulose,Hydroxypropylcellulose,Halal,"203,490"
+Indigo_carmine,Indigo carmine,Mushbooh,"23,346"
+Inosinic_acid,Inosinic acid,Mushbooh,292
+Invertase,Invertase,Halal,11
+Iron_oxide,Iron oxide,Halal,"64,373"
+Konjac,Konjac,Halal,183
+Lactic_acid,Lactic acid,Halal,"107,413"
+Lecithin,Lecithin,Mushbooh,"133,434"
+Locust_bean_gum,Locust bean gum,Halal,"172,469"
+Lutein,Lutein,Mushbooh,"54,363"
+Lycopene,Lycopene,Mushbooh,"50,359"
+Lysozyme,Lysozyme,Halal,12
+Magnesium_chloride,Magnesium chloride,Halal,238
+Magnesium_silicate,Magnesium silicate,Halal,"268,540"
+Malic_acid,Malic acid,Halal,"115,419"
+Methylcellulose,Methylcellulose,Halal,"202,489"
+Methylparaben,Methylparaben,Halal,"81,390"
+Modified_starch,Modified starch,Halal,27
+Mono_and_diglycerides_of_fatty_acids,Mono and diglycerides of fatty acids,Mushbooh,"211,495"
+Monosodium_Glutamate,Monosodium Glutamate,Mushbooh,"283,552"
+Natamycin,Natamycin,Halal,96
+Niacin,Niacin,Halal,"160,457"
+Patent_Blue_V,Patent Blue V,Mushbooh,"22,345"
+Pectin,Pectin,Halal,"191,485"
+Phosphoric_acid,Phosphoric acid,Halal,"145,446"
+Polydextrose,Polydextrose,Halal,14
+Polyglycerol_esters_of_fatty_acids,Polyglycerol esters of fatty acids,Mushbooh,"216,499"
+Polyglycerol_polyricinoleate,Polyglycerol polyricinoleate,Mushbooh,"217,500"
+Polyphosphate,Polyphosphate,Mushbooh,199
+Ponceau_4R,Ponceau 4R,Halal,"18,342"
+Potassium_acetate,Potassium acetate,Halal,"104,410"
+Potassium_bisulfite,Potassium bisulfite,Halal,90
+Potassium_carbonate,Potassium carbonate,Halal,"231,512"
+Potassium_chloride,Potassium chloride,Halal,"235,516"
+Potassium_citrate,Potassium citrate,Halal,"139,440"
+Potassium_hydroxide,Potassium hydroxide,Halal,"251,525"
+Potassium_lactate,Potassium lactate,Halal,"135,436"
+Potassium_metabisulphite,Potassium metabisulphite,Halal,"87,396"
+Potassium_nitrate,Potassium nitrate,Halal,"102,408"
+Potassium_phosphate,Potassium phosphate,Mushbooh,"147,448"
+Potassium_sorbate,Potassium sorbate,Halal,"71,380"
+Propionic_acid,Propionic acid,Halal,"108,414"
+Propyl_gallate,Propyl gallate,Halal,"125,429"
+Propylene_glycol,Propylene glycol,Halal,43
+Propylene_glycol_alginate,Propylene glycol alginate,Halal,"169,466"
+Protease,Protease,Mushbooh,10
+Pyrophosphate,Pyrophosphate,Mushbooh,"197,487"
+Riboflavin,Riboflavin,Mushbooh,"2,334"
+Saccharin,Saccharin,Halal,327
+Shellac,Shellac,Mushbooh,"306,563"
+Silicon_dioxide,Silicon dioxide,Halal,"266,538"
+Silver,Silver,Halal,"66,375"
+Sodium_Potassium_and_Calcium_Salts_of_Fatty_Acids,Sodium Potassium and Calcium Salts of Fatty Acids,Mushbooh,"210,494"
+Sodium_acetate,Sodium acetate,Halal,"105,411"
+Sodium_alginate,Sodium alginate,Halal,"165,462"
+Sodium_ascorbate,Sodium ascorbate,Halal,"118,422"
+Sodium_benzoate,Sodium benzoate,Halal,"74,383"
+Sodium_bisulfite,Sodium bisulfite,Halal,"85,394"
+Sodium_carbonate,Sodium carbonate,Halal,"230,511"
+Sodium_citrate,Sodium citrate,Halal,"138,439"
+Sodium_erythorbate,Sodium erythorbate,Halal,129
+Sodium_ferrocyanide,Sodium ferrocyanide,Halal,"257,531"
+Sodium_gluconate,Sodium gluconate,Halal,"278,548"
+Sodium_hydroxide,Sodium hydroxide,Halal,"250,524"
+Sodium_inosinate,Sodium inosinate,Mushbooh,"293,556"
+Sodium_lactate,Sodium lactate,Halal,"134,435"
+Sodium_metabisulphite,Sodium metabisulphite,Halal,"86,395"
+Sodium_nitrate,Sodium nitrate,Mushbooh,"101,407"
+Sodium_nitrite,Sodium nitrite,Mushbooh,"100,406"
+Sodium_stearoyl_2_lactylate,Sodium stearoyl 2 lactylate,Mushbooh,"221,503"
+Sodium_sulphite,Sodium sulphite,Halal,"84,393"
+Sodium_triphosphate,Sodium triphosphate,Mushbooh,198
+Sorbic_acid,Sorbic acid,Halal,"69,378"
+Sorbitan_monostearate,Sorbitan monostearate,Mushbooh,"224,506"
+Sorbitan_tristearate,Sorbitan tristearate,Mushbooh,"225,507"
+Sorbitol,Sorbitol,Halal,"180,475"
+Stearic_acid,Stearic acid,Mushbooh,"274,545"
+Succinic_acid,Succinic acid,Halal,"158,455"
+Sucrose_acetate_isobutyrate,Sucrose acetate isobutyrate,Halal,195
+Sucrose_esters_of_fatty_acids,Sucrose esters of fatty acids,Mushbooh,"214,497"
+Sulphur_dioxide,Sulphur dioxide,Halal,"83,392"
+Sunset_Yellow_FCF,Sunset Yellow FCF,Halal,"8,338"
+Tara_gum,Tara gum,Halal,178
+Tartaric_acid,Tartaric acid,Halal,"141,442"
+Tartrazine,Tartrazine,Halal,"3,335"
+Tert_Butylhydroquinone,Tert Butylhydroquinone,Mushbooh,130
+Tiabendazole,Tiabendazole,Halal,"94,402"
+Titanium_dioxide,Titanium dioxide,Halal,"63,372"
+Tocopherol,Tocopherol,Mushbooh,"121,425"
+Tragacanth,Tragacanth,Halal,"174,471"
+Trisodium_phosphate,Trisodium phosphate,Mushbooh,"146,447"
+Various_Esters_of_Mono_and_Diglycerides_of_Fatty_Acids,Various Esters of Mono and Diglycerides of Fatty Acids,Mushbooh,"212,496"
+Xanthan_gum,Xanthan gum,Halal,"176,473"
+Xylitol,Xylitol,Halal,330
+Zinc_acetate,Zinc acetate,Halal,301
