@@ -1,6 +1,6 @@
 # LAPORAN GABUNGAN PENELITIAN & DATA STORYTELLING
-## MATAKULIAH: ANALISIS DATA MULTIVARIAT (TUGAS PROYEK AKHIR KELOMPOK)
-### TOPIK: NAVIGASI INTEGRITAS HALAL — PEMETAAN KOMPOSISI PANGAN RIIL MENGGUNAKAN MULTIPLE CORRESPONDENCE ANALYSIS (MCA) DAN SPARSE RBF SPECTRAL CLUSTERING
+## MATAKULIAH: SAINS DATA KOMPUTASIONAL (TUGAS PROYEK AKHIR KELOMPOK)
+### TOPIK: NAVIGASI INTEGRITAS HALAL — PEMETAAN KOMPUTASIONAL BAHAN PANGAN RIIL BERBASIS MULTIPLE CORRESPONDENCE ANALYSIS (MCA) DAN SPARSE RBF SPECTRAL CLUSTERING
 
 ---
 
@@ -228,7 +228,7 @@ Pengujian komparatif dilakukan secara menyeluruh terhadap performa spasial dan a
 
 ### 4.3 Analisis Kritis Perbandingan Metrik
 1. **Bias Metrik Euclidean (Silhouette, DBI, CHI):**
-   K-Means menghasilkan skor Silhouette yang tinggi (`0.4136`) dan DBI yang rendah (`1.0663`) karena metrik-metrik ini dibangun di atas pondasi jarak Euclidean garis lurus. Metrik ini secara default memihak partisi berbentuk bola cembung. Namun, pada data pangan riil, bentuk ini memotong cabang sebaran bahan pangan secara paksa. Sebaliknya, nilai Silhouette Spectral Clustering bernilai negatif (`-0.0807`), yang merupakan fenomena lazim pada klasterisasi manifold non-konveks karena titik ujung klaster yang melengkung secara geometris lebih dekat ke klaster lain, padahal secara rantai ketetanggaan graf mereka adalah satu kelompok yang utuh.
+   K-Means menghasilkan skor Silhouette yang tinggi (`0.4136`) and DBI yang rendah (`1.0663`) karena metrik-metrik ini dibangun di atas pondasi jarak Euclidean garis lurus. Metrik ini secara default memihak partisi berbentuk bola cembung. Namun, pada data pangan riil, bentuk ini memotong cabang sebaran bahan pangan secara paksa. Sebaliknya, nilai Silhouette Spectral Clustering bernilai negatif (`-0.0807`), yang merupakan fenomena lazim pada klasterisasi manifold non-konveks karena titik ujung klaster yang melengkung secara geometris lebih dekat ke klaster lain, padahal secara rantai ketetanggaan graf mereka adalah satu kelompok yang utuh.
 2. **Keunggulan Konektivitas Graf (Connectivity & Conductance):**
    *Average Graph Conductance* Spectral Clustering yang sangat rendah (`0.0936` vs. K-Means `0.1246`) membuktikan bahwa batas klaster Spectral mengikuti kerapatan alami graf dengan sangat bersih. Hanya $9.36\%$ hubungan ketetanggaan bahan yang bocor keluar klaster.
 3. **Validasi Kategori Halal Eksternal (Cramer's V, AMI, NMI):**
@@ -360,7 +360,7 @@ Fenomena akumulasi risiko ini secara sistematis tergambar pada perbandingan kara
 
 ![Karakteristik Kluster Produk](output_halal/fig4_cluster.png)
 
-Visualisasi karakteristik klaster di atas memperlihatkan korelasi yang jelas antara kompleksitas formulasi produk dengan tingkat kehalalan objektifnya. Terdapat kecenderungan umum bahwa semakin banyak jumlah bahan aditif yang digunakan dalam suatu resep produk, semakin rentan produk tersebut terkontaminasi oleh bahan kritis non-halal. Fenomena ini terlihat jelas pada Klaster 7 (komoditas pertanian mentah) yang memiliki jumlah bahan minimal dan mencatat tingkat kehalalan objektif tertinggi hingga 98,1% (halal asali). Sebaliknya, Klaster 8 (produk permen, donat, dan olahan susu) yang menggunakan rata-rata 11,3 bahan aditif kimia per produk mencatat tingkat kehalalan objektif terendah, yaitu sebesar 82,6%. Hal ini disebabkan oleh ketergantungan yang sangat tinggi dari produk-produk manis dan olahan susu terhadap gelatin, bubuk whey (sampingan keju yang menggunakan rennet), serta lemak roti (*shortening*).
+Visualisasi karakteristik klaster di atas memperlihatkan korelasi yang jelas antara kompleksitas formulasi produk dengan tingkat kehalalan objektifnya. Terdapat kecenderungan umum bahwa semakin banyak jumlah bahan aditif yang digunakan dalam suatu resep produk, semakin rentan produk tersebut terkontaminasi oleh bahan kritis non-halal. Fenomena ini terlihat jelas pada Klaster 7 (komoditas pertanian mentah) yang memiliki jumlah bahan minimal dan mencatat tingkat kehalalan objektif tertinggi hingga 97,8% (halal asali). Sebaliknya, Klaster 4 (olahan tepung & sereal terfortifikasi) yang menggunakan rata-rata 24,8 bahan aditif kimia per produk mencatat tingkat kehalalan objektif terendah, yaitu sebesar 2,7%. Hal ini disebabkan oleh penggunaan aditif fungsional penolong secara masif seperti pelembut adonan (L-sistein) dan vitamin fortifikasi yang rawan disalut oleh gelatin non-halal.
 
 Untuk menyederhanakan temuan-temuan kunci tersebut bagi pemangku kepentingan, seluruh intisari analisis dirangkum dalam kartu visual infografis berikut.
 
@@ -384,13 +384,13 @@ Berdasarkan visualisasi dan pengolahan data yang dilakukan, kelompok kami merumu
    Sebesar **73,53%** produk di dalam database tidak memiliki daftar bahan baku, dan hampir **99,8%** data nutrisi bernilai kosong. Lebih buruk lagi, produk yang memiliki sertifikat halal aktif hampir semuanya menyembunyikan daftar bahan bakunya. Hal ini menciptakan celah pengawasan (*blind spot*) yang sangat besar bagi perlindungan konsumen halal di Indonesia karena jaminan sertifikat hanya bersifat administratif tanpa transparansi komposisi riil.
 
 2. **Gelatin Sebagai Titik Kritis Utama (Critical Control Point):**
-   Aditif *Gelatin* (berstatus *Mashbooh* / Syubhat) muncul sebanyak **620 kali** di dalam produk pangan komersial. Gelatin menjadi titik kritis terbesar karena di pasaran global ia sering bersumber dari hewan yang tidak disembelih secara syar'i, atau dari kulit/tulang babi. Bahan haram mutlak seperti *Lard* (lemak babi) dan *Carmine* (E120) juga terdeteksi muncul di beberapa produk olahan.
+   Aditif *Gelatin* (berstatus *Mashbooh* / Syubhat) muncul sebanyak **81 kali** di dalam produk pangan komersial. Gelatin menjadi titik kritis terbesar karena di pasaran global ia sering bersumber dari hewan yang tidak disembelih secara syar'i, atau dari kulit/tulang babi. Bahan haram mutlak seperti *Lard* (lemak babi) dan *Carmine* (E120) juga terdeteksi muncul di beberapa produk olahan.
 
 3. **Asosiasi Formulasi Produk Olahan:**
    Pasangan *Salt* (garam) dan *Water* (air) memiliki ko-kemunculan tertinggi (3.655 produk). Zat perasa (*Flavouring*) memiliki korelasi kuat dengan daging sapi (*Beef*) dan gula dekstrosa (*Dextrose*), yang menceritakan pola formulasi umum pada klaster produk olahan daging berdaging gurih.
 
 4. **Kompleksitas Bahan Berbanding Terbalik dengan Kehalalan:**
-   Kluster produk dengan resep sederhana memiliki tingkat kehalalan objektif yang sangat tinggi (mencapai 98,1% pada C1). Sebaliknya, kluster produk premium yang memiliki rata-rata jumlah bahan baku kompleks (klaster C8 Premium, rata-rata 11,3 aditif) memiliki tingkat kehalalan objektif terendah yaitu **82,6%** karena akumulasi risiko bahan kritis (*mushbooh*).
+   Kluster produk dengan resep sederhana memiliki tingkat kehalalan objektif yang sangat tinggi (mencapai 97,8% pada C7). Sebaliknya, kluster produk premium yang memiliki rata-rata jumlah bahan baku kompleks (klaster C4 Olahan Tepung & Sereal, rata-rata 24,8 aditif) memiliki tingkat kehalalan objektif terendah yaitu **2,7%** karena akumulasi risiko bahan kritis (*mushbooh*).
 
 ---
 
@@ -400,14 +400,14 @@ Berikut adalah ringkasan profil kehalalan tingkat lanjut untuk setiap klaster ya
 
 | Klaster | Kategori Dominan | Jumlah Produk | Tingkat Kehalalan Objektif | Kategori Risiko Halal |
 |:---:|:---|:---:|:---:|:---:|
-| **C1** | Bumbu Penyedap & Olahan Gurih | 4.759 | Sedang | **Tinggi** (Rawan RPH & MSG) |
-| **C2** | Makanan Ringan & Sayur Awetan | 4.571 | Tinggi | **Sedang** (Rawan Kontaminasi Mesin) |
-| **C3** | Jus Buah & Makanan Bayi | 1.222 | Sangat Tinggi | **Rendah** (Rawan Enzim Penjernih) |
-| **C4** | Olahan Tepung & Sereal Fortifikasi | 403 | Sedang | **Tinggi** (Rawan L-Sistein & Vitamin) |
-| **C5** | Saus Buah & Pemanis Buah | 1.532 | Tinggi | **Sedang** (Rawan Pektin/Gelatin) |
-| **C6** | Daging Sapi Segar & Olahan | 522 | Sedang | **Sangat Tinggi** (Sembelihan RPH) |
-| **C7** | Komoditas Pertanian Mentah | 1.100 | Sangat Tinggi (98,1%) | **Sangat Rendah** (Halal Asali) |
-| **C8** | Permen, Roti Manis & Susu | 1.630 | Terendah (82,6%) | **Sangat Tinggi** (Gelatin, Whey, Lard) |
+| **C1** | Bumbu Penyedap & Olahan Gurih | 4.759 | Rendah (15,3%) | **Tinggi** (Rawan RPH & MSG) |
+| **C2** | Makanan Ringan & Sayur Awetan | 4.571 | Tinggi (83,3%) | **Sedang** (Rawan Kontaminasi Mesin) |
+| **C3** | Jus Buah & Makanan Bayi | 1.216 | Tinggi (76,2%) | **Rendah** (Rawan Enzim Penjernih) |
+| **C4** | Olahan Tepung & Sereal Fortifikasi | 403 | Terendah (2,7%) | **Tinggi** (Rawan L-Sistein & Vitamin) |
+| **C5** | Saus Buah & Pemanis Buah | 1.538 | Tinggi (89,0%) | **Sedang** (Rawan Pektin/Gelatin) |
+| **C6** | Daging Sapi Segar & Olahan | 522 | Sangat Rendah (6,9%) | **Sangat Tinggi** (Sembelihan RPH) |
+| **C7** | Komoditas Pertanian Mentah | 1.100 | Sangat Tinggi (97,8%) | **Sangat Rendah** (Halal Asali) |
+| **C8** | Permen, Roti Manis & Susu | 1.630 | Sedang (38,2%) | **Sangat Tinggi** (Gelatin, Whey, Lard) |
 
 ## BAB V: KESIMPULAN DAN SARAN
 
@@ -437,7 +437,7 @@ Berikut adalah ringkasan profil kehalalan tingkat lanjut untuk setiap klaster ya
 
 ## LAMPIRAN: PANDUAN ANTISIPASI PERTANYAAN UJIAN PERTAHANAN PROYEK (Q&A DEFENSE PREPARATION)
 
-Untuk mendukung kesiapan tim dalam mempresentasikan laporan gabungan Analisis Data Multivariat ini di hadapan dewan penguji, bagian lampiran ini merangkum pertanyaan-pertanyaan kritis beserta kunci jawaban ilmiah berbasis data dan rancangan kode program:
+Untuk mendukung kesiapan tim dalam mempresentasikan laporan gabungan Sains Data Komputasional ini di hadapan dewan penguji, bagian lampiran ini merangkum pertanyaan-pertanyaan kritis beserta kunci jawaban ilmiah berbasis data dan rancangan kode program:
 
 ### Sesi A: Landasan Matematis & Metodologi Reduksi Dimensi
 
@@ -469,11 +469,11 @@ Untuk mendukung kesiapan tim dalam mempresentasikan laporan gabungan Analisis Da
 
 #### 5. Mengapa kompleksitas resep (jumlah bahan) berbanding lurus dengan tingkat risiko kehalalan produk? Jelaskan temuan klaster Anda.
 * **Akumulasi Risiko Spasial**: Melalui visualisasi Grafik 4, terlihat tren bahwa semakin rumit formulasi bahan pangan, semakin tinggi peluang masuknya bahan titik kritis (*Mashbooh* / Syubhat).
-* **Klaster 8 (Confectionery & Olahan Susu)** memiliki rata-rata bahan aditif terbanyak per produk (11,3 aditif) dan mencatat **kehalalan objektif terendah (82,6%)** karena dominasi penggunaan bahan penolong kritis seperti:
-  * **Gelatin** (syubhat; terdeteksi muncul 620 kali di dataset, rawan babi).
+* **Klaster 4 (Olahan Tepung & Sereal Fortifikasi)** memiliki rata-rata bahan aditif terbanyak per produk (24,8 aditif) dan mencatat **kehalalan objektif terendah (2,7%)** karena dominasi penggunaan bahan penolong kritis seperti:
+  * **Gelatin** (syubhat; terdeteksi muncul 81 kali di dataset, rawan babi).
   * **Whey Powder** (syubhat; produk sampingan koagulasi susu menggunakan enzim rennet yang rawan bersumber hewani non-halal).
   * **Shortening/Mentega** (syubhat; lemak hewan pembentuk tekstur roti).
-* Sebaliknya, **Klaster 1 (Bumbu & Sup Instan)** memiliki kehalalan menengah yang didominasi daging sapi RPH dan MSG, sedangkan **Klaster 3 (Jus & Bubur Bayi)** serta **Klaster 7 (Pertanian Mentah)** memiliki kehalalan tertinggi mencapai **98,1%** karena bahannya sederhana dan nabati (*halal asali*).
+* Sebaliknya, **Klaster 8 (Permen, Roti Manis & Susu)** memiliki kehalalan menengah (38,2% Halal), sedangkan **Klaster 7 (Pertanian Mentah)** memiliki kehalalan tertinggi mencapai **97,8%** karena bahannya sederhana dan nabati (*halal asali*).
 
 #### 6. Rekomendasi regulasi apa yang paling berdampak yang dihasilkan dari proyek Data Storytelling ini?
 1. **Mandat Transparansi Terbuka (Open Data Policy)**: Mendesak BPJPH untuk mewajibkan deklarasi daftar bahan baku makanan secara digital terstruktur (API/SIHALAL) sebelum sertifikat halal administratif diberikan guna menghilangkan *blind spot* transparansi konsumen.
