@@ -366,7 +366,11 @@ Untuk menyederhanakan temuan-temuan kunci tersebut bagi pemangku kepentingan, se
 
 ![Infografis Ringkasan Insight](output_halal/fig5_insight_summary.png)
 
-Sebagai puncak dari rangkaian *data storytelling*, laporan pasif ini diintegrasikan dengan purwarupa *web dashboard* interaktif yang dapat diakses secara langsung melalui tautan [halal-analyzer.pages.dev](https://halal-analyzer.pages.dev). Dashboard ini menyediakan eksplorasi visual interaktif yang membantu membumikan hasil pemodelan spektral bagi pengguna:
+Sebagai puncak dari rangkaian *data storytelling*, laporan pasif ini diintegrasikan dengan purwarupa *web dashboard* interaktif yang dapat diakses secara langsung melalui tautan [halal-analyzer.pages.dev](https://halal-analyzer.pages.dev).
+
+![Purwarupa Web Dashboard Interaktif - Halal Analyzer](output_halal/fig6_web_dashboard.png)
+
+Dashboard ini menyediakan eksplorasi visual interaktif yang membantu membumikan hasil pemodelan spektral bagi pengguna:
 * **UMAP 2D Explorer:** Mengonversi data multidimensi menjadi visualisasi interaktif dua dimensi berbentuk galaksi sebaran produk. Pengguna dapat mengarahkan kursor (*hover*) pada setiap titik produk untuk melihat komposisi bahan penyusunnya serta posisi relatifnya terhadap klaster produk lain, sehingga memberikan representasi intuitif mengenai bagaimana Spectral Clustering mengelompokkan kemiripan bahan baku secara objektif.
 * **Live Recipe Scanner:** Fitur interaktif yang berfungsi sebagai alat bantu simulasi kebijakan, di mana pengguna dapat memasukkan resep bahan baku secara bebas untuk dianalisis kelayakan kehalalannya secara otomatis berdasarkan basis data fatwa MUI. Fitur ini secara langsung mendemonstrasikan kelayakan implementasi penapisan otomatis (*automated screening*) pada sistem regulasi jaminan produk halal nasional di masa depan.
 
