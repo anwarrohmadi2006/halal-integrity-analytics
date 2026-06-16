@@ -1,6 +1,6 @@
 # Navigasi Integritas Halal — Pemetaan Komposisi Pangan Riil Menggunakan Multiple Correspondence Analysis (MCA) dan Sparse RBF Spectral Clustering
 
-**Tugas Proyek Akhir Kelompok — Mata Kuliah: Sains Data Komputasional (Sains Data)**
+**Tugas Proyek Akhir Kelompok — Mata Kuliah: Python untuk Sains Data (Sains Data)**
 *Repositori resmi untuk analisis matematika multivariat, visualisasi spasial, dan data storytelling ekosistem pangan komersial di Indonesia ($N = 15.739$ produk).*
 
 ---

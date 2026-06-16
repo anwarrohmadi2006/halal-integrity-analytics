@@ -1,5 +1,5 @@
 # LAPORAN GABUNGAN PENELITIAN & DATA STORYTELLING
-## MATAKULIAH: SAINS DATA KOMPUTASIONAL (TUGAS PROYEK AKHIR KELOMPOK)
+## MATAKULIAH: PYTHON UNTUK SAINS DATA (TUGAS PROYEK AKHIR KELOMPOK)
 ### TOPIK: NAVIGASI INTEGRITAS HALAL — PEMETAAN KOMPUTASIONAL BAHAN PANGAN RIIL BERBASIS MULTIPLE CORRESPONDENCE ANALYSIS (MCA) DAN SPARSE RBF SPECTRAL CLUSTERING
 
 ---
@@ -437,7 +437,7 @@ Berikut adalah ringkasan profil kehalalan tingkat lanjut untuk setiap klaster ya
 
 ## LAMPIRAN: PANDUAN ANTISIPASI PERTANYAAN UJIAN PERTAHANAN PROYEK (Q&A DEFENSE PREPARATION)
 
-Untuk mendukung kesiapan tim dalam mempresentasikan laporan gabungan Sains Data Komputasional ini di hadapan dewan penguji, bagian lampiran ini merangkum pertanyaan-pertanyaan kritis beserta kunci jawaban ilmiah berbasis data dan rancangan kode program:
+Untuk mendukung kesiapan tim dalam mempresentasikan laporan gabungan Python untuk Sains Data ini di hadapan dewan penguji, bagian lampiran ini merangkum pertanyaan-pertanyaan kritis beserta kunci jawaban ilmiah berbasis data dan rancangan kode program:
 
 ### Sesi A: Landasan Matematis & Metodologi Reduksi Dimensi
 
